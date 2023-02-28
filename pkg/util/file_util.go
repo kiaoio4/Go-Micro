@@ -194,7 +194,7 @@ func GetFileListNamebyCreateTime(path string, key string) (string, error) {
 }
 
 // GetTimeRangeFromFileName -
-func GetTimeRangeFromFileName(filename string) (start, end time.Time, sensorid, status, samplerate string, err error) {
+func GetTimeRangeFromFileName(filename string) (start, end time.Time, id, status, samplerate string, err error) {
 	basename := path.Base(filename)
 	strSlice := strings.Split(basename, "_")
 	l := len(strSlice)

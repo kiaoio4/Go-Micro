@@ -21,7 +21,7 @@ func NewFileRead(fileType string) metric.FileReadMetric {
 			Subsystem: metric.MonitorSubsystem,
 			Name:      fmt.Sprintf("%s_%s", fileType, metric.MonitorFileRead),
 			Help:      "record file read result",
-		}, []string{"sensorID", "result"}),
+		}, []string{"id", "result"}),
 	}
 }
 

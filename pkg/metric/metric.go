@@ -43,6 +43,6 @@ func (f *FileCacheMonitor) registerFileCacheMonitor() error {
 }
 
 // SetFileReadValues 设置文件读取计数
-func (f *FileCacheMonitor) SetFileReadValues(sensorID, result string) {
-	f.fileReadMetric.Inc(sensorID, result)
+func (f *FileCacheMonitor) SetFileReadValues(id, result string) {
+	f.fileReadMetric.Inc(id, result)
 }

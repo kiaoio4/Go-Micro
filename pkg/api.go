@@ -9,7 +9,7 @@ import (
 
 func (micro *GoMicro) handlerWrapper(selfServiceName string, h echo.HandlerFunc) echo.HandlerFunc {
 	if micro.gossipKVCache != nil {
-		return micro.gossipKVCache.SensorIDHandlerWrapper(selfServiceName, h, true)
+		return micro.gossipKVCache.GoMicroHandlerWrapper(selfServiceName, h, true)
 	}
 	return h
 }
@@ -18,13 +18,13 @@ func (micro *GoMicro) handlerWrapper(selfServiceName string, h echo.HandlerFunc)
 func (micro *GoMicro) SetupWeb(root echoswagger.ApiRoot, base, selfServiceName string) {
 	g := root.Group(API, base)
 	g.GET("/path", micro.handlerWrapper(selfServiceName, micro.getTestData)).
-		AddParamQuery(true, "inside", "inside swarm or not", false).
+		AddParamQuery("", "path", "store path", true).
 		AddResponse(http.StatusOK, `
 		{
 			"code": 0,
 			"msg": "OK",
 			"data": [
-				"A00000000000"
+				"/home/workspace"
 			]
 		}
 		`, "", nil).
@@ -46,6 +46,6 @@ func (micro *GoMicro) SetupWeb(root echoswagger.ApiRoot, base, selfServiceName s
 			"msg":"Service Unavailable"
 		}	
 		`, nil, nil).
-		SetOperationId("sensorids").
-		SetSummary("Get information of sensor ids")
+		SetOperationId("path").
+		SetSummary("Get information of store path")
 }
