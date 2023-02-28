@@ -1,7 +1,7 @@
 [basic]
 zone = "default"
 service = "go-micro"
-apiport = 83
+apiport = 777
 apiroot = "/api/data/v1/test"
 prof = false
 inswarm = false
@@ -17,20 +17,11 @@ apitimeout = 2000
 [test]
 path = "/home/workspace"
 
-[kafka]
-enable = false
-bootstrap = "localhost:9092"
-groupid = "go-micro"
-messagemaxbytes = 67108864
-topic = "func"
-interval = 2
-
 [pprof]
 enable = false
 
 [log]
 level = "DEBUG"
-path = ""
 #loki = "localhost:9096"
 
 [trace]

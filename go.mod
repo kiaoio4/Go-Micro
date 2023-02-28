@@ -5,7 +5,6 @@ go 1.18
 require (
 	github.com/RichardKnop/machinery v1.8.5
 	github.com/bxcodec/faker/v3 v3.6.0
-	github.com/confluentinc/confluent-kafka-go v1.8.2
 	github.com/davecgh/go-spew v1.1.1
 	github.com/emirpasic/gods v1.12.0
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
@@ -21,7 +20,6 @@ require (
 	github.com/hashicorp/memberlist v0.3.1
 	github.com/jaegertracing/jaeger v1.29.0
 	github.com/jinzhu/gorm v1.9.16
-	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/echo-contrib v0.12.0
 	github.com/labstack/echo/v4 v4.6.1
 	github.com/lni/dragonboat/v3 v3.3.5

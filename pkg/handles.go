@@ -12,11 +12,10 @@ import (
 	"go-micro/common/utils"
 	"go-micro/pkg/code"
 	"go-micro/pkg/config"
-	"go-micro/pkg/kafka"
 	"go-micro/pkg/metric"
 	"go-micro/pkg/metric/monitor"
 
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 const (
@@ -32,14 +31,13 @@ type GoMicro struct {
 	logger        logging.ILogger
 	working       *sync.Mutex
 	gossipKVCache *microComponent.GossipKVCacheComponent
-	kafka         kafka.Handler
 	config        *config.GoMicroConfig
 	once          sync.Once
 	exportMetrics *metric.FileCacheMonitor
 }
 
 // NewGoMicro Instantiation object
-func NewGoMicro(config *config.GoMicroConfig, logger logging.ILogger, gossipKVCache *microComponent.GossipKVCacheComponent, k kafka.Handler) (*GoMicro, error) {
+func NewGoMicro(config *config.GoMicroConfig, logger logging.ILogger, gossipKVCache *microComponent.GossipKVCacheComponent) (*GoMicro, error) {
 	// 初始化指标采集模块
 	fr := monitor.NewFileRead("type")
 	m, err := metric.NewFileCacheMonitor(fr)
@@ -61,16 +59,10 @@ func NewGoMicro(config *config.GoMicroConfig, logger logging.ILogger, gossipKVCa
 		db.gossipKVCache = gossipKVCache
 	}
 
-	// kafka
-	if db.config.Kafka.Enable {
-		logger.Info("NewGoMicro Kafka.Enable", k)
-		db.kafka = k
-	}
-
 	return db, nil
 }
 
-// Start Connect kafka Store & taoClient
+// Start Connect Store & taoClient
 func (micro *GoMicro) Start(stop chan struct{}) {
 	sigchan := make(chan os.Signal, 1)
 	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
@@ -82,7 +74,7 @@ func (micro *GoMicro) Start(stop chan struct{}) {
 	micro.Close()
 }
 
-// Close kafka & haystack store
+// Close haystack store
 func (micro *GoMicro) Close() {
 
 	micro.once.Do(func() {

@@ -12,7 +12,6 @@ type GoMicroConfig struct {
 	Test  *TestConfig          `toml:"-"`
 	Log   *logging.LogConfig   `toml:"-"`
 	Trace *tracing.TraceConfig `toml:"-"`
-	Kafka *KafkaConfig         `toml:"-"`
 	Pprof *PprofConfig         `toml:"-"`
 }
 
@@ -20,7 +19,6 @@ type GoMicroConfig struct {
 func SetDefaultGoMicroTestConfig() {
 	basic.SetDefaultBasicConfig()
 	SetDefaultTestConfig()
-	SetDefaultKafkaConfig()
 	SetDefaultPprofConfig()
 }
 
@@ -29,7 +27,6 @@ func GetConfig() *GoMicroConfig {
 	return &GoMicroConfig{
 		Basic: basic.GetBasicConfig(),
 		Test:  GetTestConfig(),
-		Kafka: GetKafkaConfig(),
 		Pprof: GetPprofConfig(),
 		Log:   logging.GetLogConfig(),
 		Trace: tracing.GetTraceConfig(),

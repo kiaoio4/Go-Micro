@@ -8,10 +8,8 @@ import (
 
 	"go-micro/common/micro"
 	basicComponent "go-micro/common/micro/component"
-
 	"github.com/davecgh/go-spew/spew"
 	"github.com/spf13/cobra"
-
 	"go-micro/pkg"
 	"go-micro/pkg/component"
 )
@@ -32,7 +30,7 @@ func run(cmd *cobra.Command, args []string) {
 	defer func() {
 		if r := recover(); r != nil {
 			debug.PrintStack()
-			time.Sleep(time.Second * 5)
+			time.Sleep(time.Millisecond * 100)
 			os.Exit(1)
 		}
 	}()
@@ -48,8 +46,6 @@ func run(cmd *cobra.Command, args []string) {
 				Port:          6666,
 				InMachineMode: false,
 			},
-			// &basicComponent.KafkaComponent{},
-			&basicComponent.KafkaComponent{},
 			&component.TestComponent{},
 		},
 	)

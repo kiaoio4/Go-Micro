@@ -11,7 +11,6 @@ import (
 	microConf "go-micro/common/micro/conf"
 	"go-micro/pkg"
 	"go-micro/pkg/config"
-	"go-micro/pkg/kafka"
 
 	"github.com/pangpanglabs/echoswagger/v2"
 )
@@ -27,7 +26,6 @@ type TestComponent struct {
 	logger        logging.ILogger
 	nacosClient   *configuration.NacosClient
 	gossipKVCache *microComponent.GossipKVCacheComponent
-	kafka         kafka.Handler
 	cluster       string
 }
 
@@ -61,21 +59,8 @@ func (c *TestComponent) Init(server *micro.Server) error {
 	basicConfig := config.GetConfig()
 	var err error
 	c.stopChan = make(chan struct{})
-	// New Kafka
-	elkafka := server.GetElement(&micro.KafkaElementKey)
-	if elkafka != nil {
-		if c.kafka, err = kafka.New(
-			kafka.WithKafka(elkafka),
-			kafka.WithLogger(c.logger),
-		); err != nil {
-			c.logger.Errorw("NewServer", "err", err)
-			return err
-		}
-	} else {
-		c.logger.Warnw("GetElement", "GetElement", "is null")
-	}
 
-	c.handler, err = pkg.NewGoMicro(basicConfig, c.logger, c.gossipKVCache, c.kafka)
+	c.handler, err = pkg.NewGoMicro(basicConfig, c.logger, c.gossipKVCache)
 	if err != nil {
 		return err
 	}
@@ -99,10 +84,6 @@ func (c *TestComponent) SetupHandler(root echoswagger.ApiRoot, base string) erro
 
 // Start the component
 func (c *TestComponent) Start(ctx context.Context) error {
-	if c.kafka != nil {
-		go c.kafka.Start(ctx)
-	}
-
 	// start
 	go c.handler.Start(c.stopChan)
 	return nil
@@ -110,10 +91,6 @@ func (c *TestComponent) Start(ctx context.Context) error {
 
 // Stop the component
 func (c *TestComponent) Stop(ctx context.Context) error {
-	if c.kafka != nil {
-		c.kafka.Stop()
-	}
-
 	// stop
 	c.stopChan <- struct{}{}
 	return nil
