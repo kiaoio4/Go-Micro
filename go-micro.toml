@@ -1,0 +1,38 @@
+[basic]
+zone = "default"
+service = "go-micro"
+apiport = 83
+apiroot = "/api/data/v1/test"
+prof = false
+inswarm = false
+isapirate = false
+isapibody = false
+isapitimeout = false
+apirate = 5
+apiburst = 10
+apiexpires = 10
+apibodylimit = "10M"
+apitimeout = 2000
+
+[test]
+path = "/home/workspace"
+
+[kafka]
+enable = false
+bootstrap = "localhost:9092"
+groupid = "go-micro"
+messagemaxbytes = 67108864
+topic = "func"
+interval = 2
+
+[pprof]
+enable = false
+
+[log]
+level = "DEBUG"
+path = ""
+#loki = "turing-basic-loki:9096"
+
+[trace]
+jaegerCollector = "http://turing-basic-tempo:14268"
+tempoQuery = "turing-basic-tempo:9095"
