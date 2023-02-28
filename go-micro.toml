@@ -31,8 +31,8 @@ enable = false
 [log]
 level = "DEBUG"
 path = ""
-#loki = "turing-basic-loki:9096"
+#loki = "localhost:9096"
 
 [trace]
-jaegerCollector = "http://turing-basic-tempo:14268"
-tempoQuery = "turing-basic-tempo:9095"
+jaegerCollector = "http://localhost:14268"
+tempoQuery = "localhost:9095"

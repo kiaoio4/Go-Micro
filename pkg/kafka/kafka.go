@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	turingKafka "go-micro/common/kafka"
+	goMicroKafka "go-micro/common/kafka"
 	"go-micro/common/logging"
 	"go-micro/pkg/config"
 )
@@ -26,13 +26,13 @@ type ProtoData struct {
 
 // Client -
 type Client struct {
-	client *turingKafka.Kafka
+	client *goMicroKafka.Kafka
 	config *config.GoMicroConfig
 	logger logging.ILogger
 }
 
 // NewKafkaClient -
-func NewKafkaClient(logger logging.ILogger, k *turingKafka.Kafka, config *config.GoMicroConfig) *Client {
+func NewKafkaClient(logger logging.ILogger, k *goMicroKafka.Kafka, config *config.GoMicroConfig) *Client {
 	return &Client{
 		client: k,
 		config: config,

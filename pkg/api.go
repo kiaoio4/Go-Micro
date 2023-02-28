@@ -17,7 +17,7 @@ func (micro *GoMicro) handlerWrapper(selfServiceName string, h echo.HandlerFunc)
 // SetupWeb Set interface
 func (micro *GoMicro) SetupWeb(root echoswagger.ApiRoot, base, selfServiceName string) {
 	g := root.Group(API, base)
-	g.GET("/path", micro.handlerWrapper(selfServiceName, micro.getRawData)).
+	g.GET("/path", micro.handlerWrapper(selfServiceName, micro.getTestData)).
 		AddParamQuery(true, "inside", "inside swarm or not", false).
 		AddResponse(http.StatusOK, `
 		{

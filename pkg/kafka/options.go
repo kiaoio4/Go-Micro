@@ -1,7 +1,7 @@
 package kafka
 
 import (
-	turingKafka "go-micro/common/kafka"
+	goMicroKafka "go-micro/common/kafka"
 	"go-micro/common/logging"
 	"go-micro/pkg/config"
 )
@@ -41,7 +41,7 @@ func WithConfig(c *config.GoMicroConfig) Option {
 func WithKafka(k interface{}) Option {
 	return func(opts *Server) {
 		if k != nil {
-			opts.kafka = k.(*turingKafka.Kafka)
+			opts.kafka = k.(*goMicroKafka.Kafka)
 		}
 	}
 }

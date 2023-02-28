@@ -50,7 +50,7 @@ func run(cmd *cobra.Command, args []string) {
 			},
 			// &basicComponent.KafkaComponent{},
 			&basicComponent.KafkaComponent{},
-			&component.DataRawdbComponent{},
+			&component.TestComponent{},
 		},
 	)
 	pkg.AppVersion = AppVersion

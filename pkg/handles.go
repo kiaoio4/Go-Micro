@@ -103,7 +103,7 @@ func (micro *GoMicro) handleDecodeResult(sigchan chan os.Signal, workindex int) 
 	}
 }
 
-func (micro *GoMicro) getRawData(c echo.Context) error {
+func (micro *GoMicro) getTestData(c echo.Context) error {
 	path := c.QueryParam("path")
 	return c.JSON(http.StatusOK, utils.ResponseV2{
 		Code: code.Success,

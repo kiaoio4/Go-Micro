@@ -16,8 +16,8 @@ type GoMicroConfig struct {
 	Pprof *PprofConfig         `toml:"-"`
 }
 
-// SetDefaultRawDBConfig -
-func SetDefaultRawDBConfig() {
+// SetDefaultGoMicroTestConfig -
+func SetDefaultGoMicroTestConfig() {
 	basic.SetDefaultBasicConfig()
 	SetDefaultTestConfig()
 	SetDefaultKafkaConfig()

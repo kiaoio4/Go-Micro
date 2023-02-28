@@ -16,11 +16,11 @@ import (
 	"github.com/pangpanglabs/echoswagger/v2"
 )
 
-// DataRawdbElementKey is Element Key for Datarawdb
-var DataRawdbElementKey = micro.ElementKey("TestComponent")
+// TestElementKey is Element Key for TestComponent
+var TestElementKey = micro.ElementKey("TestComponent")
 
-// DataRawdbComponent is Component for DataRawdb
-type DataRawdbComponent struct {
+// TestComponent is Component for TestComponent
+type TestComponent struct {
 	micro.EmptyComponent
 	stopChan      chan struct{}
 	handler       *pkg.GoMicro
@@ -32,19 +32,19 @@ type DataRawdbComponent struct {
 }
 
 // Name of the component
-func (c *DataRawdbComponent) Name() string {
+func (c *TestComponent) Name() string {
 	return "TestComponent"
 }
 
 // PreInit called before Init()
-func (c *DataRawdbComponent) PreInit(ctx context.Context) error {
+func (c *TestComponent) PreInit(ctx context.Context) error {
 	// load config
 	config.SetDefaultTestConfig()
 	return nil
 }
 
 // Init the component
-func (c *DataRawdbComponent) Init(server *micro.Server) error {
+func (c *TestComponent) Init(server *micro.Server) error {
 	// init
 	basicConf := microConf.GetBasicConfig()
 	c.cluster = server.PrivateCluster
@@ -84,12 +84,12 @@ func (c *DataRawdbComponent) Init(server *micro.Server) error {
 }
 
 // OnConfigChanged called when dynamic config changed
-func (c *DataRawdbComponent) OnConfigChanged(*platformConf.NodeConfig) error {
+func (c *TestComponent) OnConfigChanged(*platformConf.NodeConfig) error {
 	return micro.ErrNeedRestart
 }
 
 // SetupHandler of echo if the component need
-func (c *DataRawdbComponent) SetupHandler(root echoswagger.ApiRoot, base string) error {
+func (c *TestComponent) SetupHandler(root echoswagger.ApiRoot, base string) error {
 	basicConf := microConf.GetBasicConfig()
 	selfServiceName := basicConf.Service
 	c.handler.SetupWeb(root, base, selfServiceName)
@@ -98,7 +98,7 @@ func (c *DataRawdbComponent) SetupHandler(root echoswagger.ApiRoot, base string)
 }
 
 // Start the component
-func (c *DataRawdbComponent) Start(ctx context.Context) error {
+func (c *TestComponent) Start(ctx context.Context) error {
 	if c.kafka != nil {
 		go c.kafka.Start(ctx)
 	}
@@ -109,7 +109,7 @@ func (c *DataRawdbComponent) Start(ctx context.Context) error {
 }
 
 // Stop the component
-func (c *DataRawdbComponent) Stop(ctx context.Context) error {
+func (c *TestComponent) Stop(ctx context.Context) error {
 	if c.kafka != nil {
 		c.kafka.Stop()
 	}

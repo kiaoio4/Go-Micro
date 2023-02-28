@@ -7,14 +7,12 @@ require (
 	github.com/bxcodec/faker/v3 v3.6.0
 	github.com/confluentinc/confluent-kafka-go v1.8.2
 	github.com/davecgh/go-spew v1.1.1
-	github.com/docker/docker v20.10.7+incompatible
 	github.com/emirpasic/gods v1.12.0
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-resty/resty/v2 v2.6.0
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gomodule/redigo v2.0.0+incompatible
-	github.com/google/btree v1.0.1 // indirect
 	github.com/gorilla/websocket v1.4.2
 	github.com/grafana/loki v1.6.1
 	github.com/grafana/tempo v1.2.1
@@ -23,6 +21,7 @@ require (
 	github.com/hashicorp/memberlist v0.3.1
 	github.com/jaegertracing/jaeger v1.29.0
 	github.com/jinzhu/gorm v1.9.16
+	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/echo-contrib v0.12.0
 	github.com/labstack/echo/v4 v4.6.1
 	github.com/lni/dragonboat/v3 v3.3.5
@@ -35,11 +34,11 @@ require (
 	github.com/silenceper/pool v1.0.0
 	github.com/smartystreets/goconvey v1.6.4
 	github.com/snovichkov/zap-gelf v1.0.1
-	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.10.1
 	github.com/stretchr/testify v1.7.0
+	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/vulcand/oxy v1.3.0
 	go.uber.org/atomic v1.9.0
 	go.uber.org/automaxprocs v1.4.0
@@ -52,15 +51,9 @@ require (
 )
 
 require (
-	github.com/labstack/echo v3.3.10+incompatible
-	github.com/uber/jaeger-client-go v2.30.0+incompatible
-)
-
-require (
 	cloud.google.com/go v0.99.0 // indirect
 	cloud.google.com/go/kms v1.1.0 // indirect
 	cloud.google.com/go/pubsub v1.10.0 // indirect
-	github.com/Microsoft/go-winio v0.4.17 // indirect
 	github.com/RichardKnop/logging v0.0.0-20190827224416-1a693bdd4fae // indirect
 	github.com/RichardKnop/redsync v1.2.0 // indirect
 	github.com/VictoriaMetrics/metrics v1.6.2 // indirect
@@ -79,10 +72,6 @@ require (
 	github.com/cockroachdb/pebble v0.0.0-20210331181633-27fc006b8bfb // indirect
 	github.com/cockroachdb/redact v1.0.6 // indirect
 	github.com/cockroachdb/sentry-go v0.6.1-cockroachdb.2 // indirect
-	github.com/containerd/containerd v1.5.3 // indirect
-	github.com/docker/distribution v2.7.1+incompatible // indirect
-	github.com/docker/go-connections v0.4.0 // indirect
-	github.com/docker/go-units v0.4.0 // indirect
 	github.com/envoyproxy/go-control-plane v0.10.1 // indirect
 	github.com/envoyproxy/protoc-gen-validate v0.6.2 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
@@ -94,6 +83,7 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
+	github.com/google/btree v1.0.1 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/googleapis/gax-go/v2 v2.1.1 // indirect
@@ -125,8 +115,6 @@ require (
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/opencontainers/go-digest v1.0.0 // indirect
-	github.com/opencontainers/image-spec v1.0.1 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
@@ -137,6 +125,7 @@ require (
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/smartystreets/assertions v1.0.1 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
+	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/streadway/amqp v1.0.0 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
